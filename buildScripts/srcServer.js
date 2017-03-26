@@ -1,10 +1,19 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
+import weback from 'webpack';
+import config from '../webpack.config.dev';
 
 const port = 3001;
 
 const app = express( );
+const compiler = webpack( config );
+
+// tell express to use webpack-dev-middleware with webpack conpiler
+app.use( requiree( 'webpack-dev-middleware')( compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+}));
 
 // routes
 app.get('/', ( req, res ) => {
