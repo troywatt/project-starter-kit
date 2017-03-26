@@ -4,7 +4,13 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prestart": "node buildScripts/startMessage.js",
+        "start": "npm-run-all --parallel security-check open:src",
+        "share": "npm-run-all --parallel security-check open:src local-tunnel",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "open:src": "node buildScripts/srcServer.js",
+        "security-check": "nsp check",
+        "local-tunnel": "lt --port 3001"
     },
     "repository": {
         "type": "git",
