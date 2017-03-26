@@ -1,22 +1,20 @@
-var express = require( 'express' );
-var path = require( 'path' );
-var open = require( 'open' );
+import express from 'express';
+import path from 'path';
+import open from 'open';
 
-var port = 3001;
+const port = 3001;
 
-
-var app = express();
+const app = express( );
 
 // routes
-app.get( '/', function( req, res ){
-    res.sendFile( path.join( __dirname, '../src/index.html' ));
-} );
+app.get('/', ( req, res ) => {
+    res.sendFile(path.join( __dirname, '../src/index.html' ));
+});
 
-app.listen( port, function( err ){
-    if( err ) {
+app.listen(port, ( err ) => {
+    if ( err ) {
         console.log( err );
-    }
-    else {
+    } else {
         open( 'http://localhost:' + port );
     }
 });
